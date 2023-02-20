@@ -1,0 +1,76 @@
+{% extends "_base.html" %} 
+{% block content %}
+<div class="container mx-auto mt-12">
+  <h1 class="font-semibold title-font sm:text-4xl text-3xl">Patients</h1>
+  <div class="py-4">
+    <div class="w-full border-t border-gray-500"></div>
+  </div>
+  <div class="flex flex-col">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block py-2 min-w-full sm:px-6 lg:px-8">
+        <div class="overflow-hidden shadow-md sm:rounded-lg">
+          <table class="min-w-full">
+            <thead class="bg-gray-50">
+              <tr>
+                <th
+                  scope="col"
+                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                >
+                  Patient Name
+                </th>
+                <th
+                  scope="col"
+                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                >
+                  Prediction
+                </th>
+                <th
+                  scope="col"
+                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                >
+                  Category
+                </th>
+                <th
+                  scope="col"
+                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase"
+                >
+                  Status
+                </th>
+                <th scope="col" class="relative py-3 px-6">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for patient in patients %}
+              <!-- Product 1 -->
+              <tr class="bg-white border-b">
+                <td
+                  class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap"
+                >
+                  {{ patient.firstname }}
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
+                  {% if patient.prediction %} Yes {% else %} No {% endif %}
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
+                  {{ patient.category }}
+                </td>
+                <td class="py-4 px-6 text-sm text-gray-500 whitespace-nowrap">
+                  status
+                </td>
+                <td
+                  class="py-4 px-6 text-sm font-medium text-right whitespace-nowrap"
+                >
+                  <a href="{{ patient.get_absolute_url }}" class="text-blue-600 hover:underline">View</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content%}

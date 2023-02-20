@@ -1,0 +1,7 @@
+commands.md
+.git
+.gitignore
+.docker
+__pycache__
+.env/
+.venv/
